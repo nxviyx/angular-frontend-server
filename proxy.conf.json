@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://flask-backend-server.herokuapp.com",
+        "secure": false
+    }
+}
