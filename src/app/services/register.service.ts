@@ -8,7 +8,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  readonly baseURL = 'http://127.0.0.1:5000/api/';
+  readonly baseURL = 'https://flask-backend-server.herokuapp.com/api/';
 
   registerUser(userObj) {
     return this.http.post(this.baseURL+'register', userObj);
