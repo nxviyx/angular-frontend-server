@@ -1,0 +1,95 @@
+<!-- Spinner -->
+<div *ngIf="loading" id="pause" class="d-flex align-items-center justify-content-center">
+    <div id="spinner"></div>
+  </div>
+  
+  <!-- Page Title -->
+  <div class="container mt-5 text-center">
+    <h2 style="color: #435e83;"><b>Register</b></h2>
+  </div>
+  
+  <!-- Register Form -->
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="container mt-5 pt-5 feature-thumb">
+
+
+        <!-- Image upload section-->
+
+        <div class="form-group">
+          <div class="justify-content-center">
+              <label class="hoverable" for="fileInput">
+              <img class="image" [src]="image_url ? image_url : 'https://alliancebjjmn.com/wp-content/uploads/2019/07/placeholder-profile-sq.jpg'"> 
+              <div class="hover-text">Choose file</div>
+              <div class="background"></div>
+            </label>
+            <br/>
+            <input id="fileInput" type='file' accept="image/*" (change)="showPreview($event)">
+          </div>
+        </div>
+
+        <!-- Firstname -->
+
+        <div class="form-group">
+          <label for="first_name"><b>First name: </b></label>
+          <input class="form-control" type = "text" name = "first_name" placeholder = "Enter first name" formControlName="first_name"
+          [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+          <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+            <div *ngIf="f.first_name.errors.required">First Name is required</div>
+          </div>
+        </div>
+
+        <!-- lastname -->
+        
+        <div class="form-group">
+          <label for="last_name"><b>Last name: </b></label>
+          <input class="form-control" type = "text" name = "last_name" placeholder = "Enter last name" formControlName="last_name" 
+          [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+          <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+            <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+          </div>
+        </div>
+
+        <!-- email -->
+
+        <div class="form-group">
+          <label for="email"><b>E-mail: </b></label>
+          <input class="form-control" type = "email" name = "email" placeholder = "Enter email" formControlName="email" 
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">E-mail is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+
+        <!-- password -->
+
+        <div class="form-group">
+          <label for="password"><b>Password: </b></label >
+          <input class="form-control" type = "password" name = "password" placeholder = "Enter password" formControlName="password" 
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 5 characters</div>
+          </div>
+        </div>
+        
+        <!-- confirm password -->
+
+        <div class="form-group">
+          <label for="confirm_password"><b>Confirm password: </b></label >
+          <input class="form-control" type = "password" name = "confirm_password" placeholder = "Re enter password" formControlName="confirm_password" 
+          [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }">
+          <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
+            <div *ngIf="f.confirm_password.errors.required">Confirm password is required</div>
+            <div *ngIf="f.confirm_password.errors.minlength">Confirm password must be at least 5 characters</div>
+          </div>
+        </div>
+
+        <!-- submit button -->
+        <div class="form-group text-center">
+          <input style="background-color: #435e83;" class="btn btn-secondary" type = "submit" value = "Register"><br><br>
+          <p>Already have an account? <a routerLink="/login"> Login</a></p>
+        </div>
+
+      </div>
+  </form>
